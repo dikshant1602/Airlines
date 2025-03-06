@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrival & Departure Table</title>
+    <link rel="stylesheet" href="flight.css">
+</head>
+<body>
+    <section>
+        <div class="table-container">
+            <h2>Departure</h2>
+            <table id="departure-table">
+                <thead>
+                    <tr>
+                        <th>Flight No</th>
+                        <th>Airline</th>
+                        <th>Origin</th>
+                        <th>Destination</th>
+                        <th>Departure Time</th>
+                        <th>Arrival Time</th>
+                        <th>Status</th>
+                        <th>Book</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be generated dynamically here -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section>
+        <div class="table-container">
+            <h2>Arrival</h2>
+            <table id="arrival-table">
+                <thead>
+                    <tr>
+                        <th>Flight No</th>
+                        <th>Airline</th>
+                        <th>Origin</th>
+                        <th>Destination</th>
+                        <th>Departure Time</th>
+                        <th>Arrival Time</th>
+                        <th>Status</th>
+                        <th>Book</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be generated dynamically here -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <script>
+        // Sample flight data for departure and arrival
+        const flightData = {
+            departures: [
+                { flightNo: "AI123", airline: "Air India", origin: "Mumbai", destination: "Delhi", depTime: "10:30 AM", arrTime: "11:45 AM", status: "On Time" },
+                { flightNo: "BA456", airline: "British Airways", origin: "Mumbai", destination: "Delhi", depTime: "12:00 PM", arrTime: "1:30 PM", status: "Delayed" },
+                { flightNo: "QR789", airline: "Qatar Airways", origin: "Mumbai", destination: "Delhi", depTime: "3:15 PM", arrTime: "4:45 PM", status: "On Time" }
+            ],
+            arrivals: [
+                { flightNo: "AI123", airline: "Air India", origin: "Mumbai", destination: "Delhi", depTime: "10:30 AM", arrTime: "11:45 AM", status: "On Time" },
+                { flightNo: "BA456", airline: "British Airways", origin: "Mumbai", destination: "Delhi", depTime: "12:00 PM", arrTime: "1:30 PM", status: "Delayed" },
+                { flightNo: "QR789", airline: "Qatar Airways", origin: "Mumbai", destination: "Delhi", depTime: "3:15 PM", arrTime: "4:45 PM", status: "On Time" }
+            ]
+        };
+
+        // Function to populate table rows dynamically
+        function populateTable(tableId, flights) {
+            const tableBody = document.getElementById(tableId).getElementsByTagName('tbody')[0];
+            tableBody.innerHTML = '';  // Clear existing rows
+            flights.forEach(flight => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${flight.flightNo}</td>
+                    <td>${flight.airline}</td>
+                    <td>${flight.origin}</td>
+                    <td>${flight.destination}</td>
+                    <td>${flight.depTime}</td>
+                    <td>${flight.arrTime}</td>
+                    <td>${flight.status}</td>
+                    <td><a href="payment.html" class="book-btn">book</a></td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Populate both tables on page load
+        window.onload = function() {
+            populateTable('departure-table', flightData.departures);
+            populateTable('arrival-table', flightData.arrivals);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+        .sub-header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .centered-div {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 60px;
+            margin: 20px auto;
+            max-width: 500px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .download-details {
+            display: none;
+            margin-top: 20px;
+            background-color: #e7f7e7;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .footer {
+            background-color: white;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        .icons i {
+            margin: 0 10px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <section class="sub-header">
+        <nav>
+            <a href="index.html"><img src="images/logo.webp" height="100px" width="100px" style="border-radius: 50%;"></a>
+            <h1>DC AIRLINES</h1>
+            <div class="nav-links" id="navLinks">
+                <i class="fa-solid fa-xmark" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                    <li><a href="sign-up.html">SIGN UP</a></li>
+                </ul>
+            </div> 
+            <i class="fa-solid fa-bars" onclick="showMenu()"></i>
+        </nav>
+    </section>
+
+    <!-- Centered div -->
+    <div class="centered-div">
+        <h1>Your booking has been completed!</h1>
+        <button class="btn" id="downloadBtn">Download Details</button>
+
+        <!-- Hidden download details -->
+        <div class="download-details" id="detailsDiv">
+            <!-- Details will be populated dynamically -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <section class="footer">
+        <h4><a href="about.html">ABOUT US</a></h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <div class="icons">
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-linkedin"></i>
+        </div>
+    </section>
+
+    <script>
+        // Show the download details
+        document.getElementById('downloadBtn').addEventListener('click', function () {
+            const details = JSON.parse(localStorage.getItem("bookingDetails"));
+
+            if (details) {
+                document.getElementById("detailsDiv").innerHTML = `
+                    <p>Booking Reference: ${details.bookingReference}</p>
+                    <p>Date: ${details.date}</p>
+                    <p>Flight: ${details.flight}</p>
+                    <p>Departure: ${details.departure}</p>
+                    <p>Arrival: ${details.arrival}</p>
+                `;
+                document.getElementById("detailsDiv").style.display = "block";
+            }
+        });
+    </script>
+</body>
+</html>

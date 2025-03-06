@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: url(images/arrival.jpg); /* Dark gradient background */
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    min-height: 100vh;
+}
+.book-btn {
+    display: inline-block;
+    padding: 10px 20px; /* Adjust padding for better button size */
+    background-color: rgb(216, 57, 123); /* Ensure dark background */
+    color: #fff; /* White text */
+    border-radius: 5px;
+    text-decoration: none; /* Remove underline */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.book-btn:hover {
+    background-color: #444; /* Slightly lighter on hover */
+}
+
+.book-btn:active {
+    background-color: #222; /* Darker on click */
+}
+
+
+.table-container {
+    width: 50%;
+    margin: 50px 0; /* Adds space between the tables */
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 10px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+table {
+    width: 100%;
+    border: 1px solid #fff;
+    border-collapse: collapse; /* Ensures table borders are clearly visible */
+    background-color: transparent;
+}
+
+thead th {
+    padding: 12px;
+    font-size: 16px;
+    color: #fff;
+    text-transform: uppercase;
+    border-bottom: 2px solid #fff;
+    border-right: 1px solid #fff; /* Adds vertical lines between columns */
+}
+
+thead th:last-child {
+    border-right: none; /* Remove right border for the last column */
+}
+
+tbody td {
+    padding: 12px;
+    text-align: center;
+    font-size: 14px;
+    border-bottom: 1px solid #fff;
+    border-right: 1px solid #fff; /* Adds vertical lines between columns */
+}
+
+tbody tr td:last-child {
+    border-right: none; /* Remove right border for the last column */
+}
+
+tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Slight transparent hover effect */
+}
+
+tbody tr:nth-child(even) {
+    background-color: transparent;
+}
+
+tbody tr td button {
+    padding: 5px 10px;
+    background-color: rgb(216, 57, 123);
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+tbody tr td button:hover {
+    background-color: #d4ac0d;
+}
+
+tbody tr td:nth-child(7) {
+    color: yellow; /* Green for On Time */
+}
+
+tbody tr td:nth-child(7):contains('Delayed') {
+    color: #e74c3c; /* Red for Delayed */
+}
